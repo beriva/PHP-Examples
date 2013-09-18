@@ -13,7 +13,7 @@ Closures are functions that can be defined and passed around and used as variabl
 
 You define a Closure by using a function keyword like so, and assign it to a variable.
 
-```
+```php
 <?php
 $myFunction = function () {
 	echo "Hello";
@@ -23,7 +23,7 @@ $myFunction = function () {
 
 And you can use it by adding parentheses () to the variable:
 
-```
+```php
 <?php
 $returnValue = $myFunction();
 echo $returnValue; // 200
@@ -33,7 +33,7 @@ They can be used as 'callbacks' - a chunk of functionality to run after or befor
 
 For example, from Laravel's router:
 
-```
+```php
 <?php
 
 Route::get('/', function()
@@ -55,7 +55,7 @@ Objects and classes (which are PRETTY MUCH the same thing) are the foundation of
 
 A class is the definition of an object - the **blueprint** for what the class can and can't do.
 
-```
+```php
 <?php
 
 class Bar {
@@ -74,19 +74,19 @@ The above class has one property `$data`, and one method (function), `makeMeASan
 
 We all know how to create an *instance* of an object by now:
 
-```
+```php
 $foo = new Bar();
 ```
 
 And we all know that we can call methods on an instance of an object, if that method exists:
 
-```
+```php
 $bar = $foo->makeMeASandwich();
 ```
 
 And that an instance of an object has *properties*
 
-```
+```php
 $data = $foo->data;
 echo $data;
 ```
@@ -95,13 +95,13 @@ echo $data;
 
 When you use the `new` keyword to create a new instance of a class, you sometimes see people passing data to the class upon creating an instance, like:
 
-```
+```php
 $class = new FooClass($data);
 ```
 
 When people do this, the data gets passed to the `__construct()` function inside the class, and from there, you can do with it what you want.
 
-```
+```php
 class FooClass {
 	public function __construct($data) {
 		// From here, you can do what you want with the $data.
@@ -111,7 +111,7 @@ class FooClass {
 
 Whatever arguments the `__construct()` function has, are the arguments it expects when it gets instantiated:
 
-```
+```php
 class FizzyPop {
 	public function __construct($flavour, $size) {
 		// This expects a flavour and a size.
@@ -129,7 +129,7 @@ Arguments act just like arguments to functions, so you can supply default values
 
 When you're inside a class, you can use the wonderful `$this` variable to access the properties and methods of your class from inside your class functions.
 
-```
+```php
 class FizzyPop {
 	public $flavour;
 	public $size;
@@ -148,7 +148,7 @@ echo $soda->flavour; // Prints 'Orange Fanta'
 
 You can also call functions from inside the class:
 
-```
+```php
 class FizzyPop {
 	public $flavour;
 	public $size;
@@ -178,7 +178,7 @@ Methods and properties in a class can be declared as `public`, `private`, or `pr
 
 Public methods and properties can be accessed by anyone using the class, this is typically what most people default their methods and properties to, even though they probably shouldn't.
 
-```
+```php
 class HasPublicStuff {
 	public $time;
 	public myMethod() {
@@ -197,7 +197,7 @@ $class->myMethod(); // Works.
 
 Private methods and properties can **only be accessed from within the class they're declared in.** This means that any sub-classes (we'll talk about this later on) cannot access them. Not a lot of people i know use `private` keywords in their classes.
 
-```
+```php
 class HasPrivateStuff {
 	private $time;
 	private myMethod() {
@@ -219,7 +219,7 @@ $class->myMethod(); // DOES NOT WORK.
 Now, if you've got a property or a method that you don't want someone outside your class to use, BUT you want it to be accessible by subclasses (trust me here, in most cases, you do), then you want the protected keyword. It'll stop people outside your class using it directly, but will allow for greater flexibility down the line. Most classes you see nowadays use a mix of protected and public properties and methods.
 
 
-```
+```php
 class HasProtectedtuff {
 	protected $time;
 	protected myMethod() {
@@ -247,7 +247,7 @@ You'll have heard of one or two magic methods by now, at least the `__construct(
 `__destruct()` is called automatically when getting rid of the object, this is done by calling `unset()`, or PHP will do it when it needs memory.
 
 
-```
+```php
 class Sandwich {
 
 	public function __construct() {
@@ -271,7 +271,7 @@ There's another couple of great magic methods: `__toString()` and `__invoke()`.
 
 This is used when you want to get a string representation of an object - this means that if someone passes an instance of an object to an `echo` or `print` function, or tries to use it in a string.
 
-```
+```php
 class FizzyPop {
 	public $flavour;
 	public $size;
@@ -296,7 +296,7 @@ echo $soda; // Normally this would just say 'object', but now it says 'The flavo
 
 This is used when you want to call an instance of an object like a function (did you know you can call variables and objects as functions)?
 
-```
+```php
 class FizzyPop {
 	public $flavour;
 	public $size;
@@ -333,7 +333,7 @@ You'll see static functions being called like: `ClassName::functionName($argumen
 
 And you'll see it declared very similarly to a normal class function, except it uses the `static` keyword:
 
-```
+```php
 class HasStaticStuff {
 	public static function helloWorld() {
 		echo 'Hello World';
@@ -349,7 +349,7 @@ HasStaticStuff::helloWorld(); // Prints Hello world.
 In the same way that the only difference between a normal class function and a static function is the `static` keyword, the same applies to variables:
 
 
-```
+```php
 class HasStaticStuff {
 	public static $time;
 }
@@ -363,8 +363,7 @@ echo HasStaticStuff::$time; // Prints '12pm';
 
 Inside a static class, you can't use the `$this` variable - because it **isn't an instance**. But you still might have another static method that you want to call from within a static method, or you might want. Essentially, when working with static methods, the `$this` variable simply becomes `static` - it's a little confusing at first, but you'll soon catch on.
 
-```
-
+```php
 class HasStaticGoodness {
 
 	public static function StaticOne()
@@ -391,7 +390,7 @@ HasStaticGoodness::StaticOne(); // Will print 'Hello, i'm static method two'
 
 This is perfectly valid and loads of people do it. In fact, some people use what we call 'static initialisers' to simplify getting an instance of an object:
 
-```
+```php
 class MyAwesomeClass {
 
 	public $name;
@@ -420,7 +419,7 @@ class MyAwesomeClass {
 
 Then you can do:
 
-```
+```php
 // Create a new instance of the object using the static method:
 $instance = MyAwesomeClass::initWithNameAndAge("Dan Matthews", 24);
 
@@ -432,7 +431,7 @@ echo $instance->whatsMyAgeAgain(); // Prints 24.
 
 Below is an example of methods from Stripe's `Stripe_Customer` class, they use static methods to make things accessible and easy to read, but they're grouped together in a class so that you know where to look for functions to do with Customers.
 
-```
+```php
 public static function retrieve($id, $apiKey=null)
 {
 	$class = get_class();
@@ -460,7 +459,7 @@ I came across this problem while writing CloudCPD - i needed access to a very la
 
 Now this approach isn't recommended for huge amounts of data - i learned that the hard way, it slows sites to a standstill sometimes, but for small values, using a static property as a little 'data store' that is accessible from wherever in your script is fine.
 
-```
+```php
 function runThisOneFirst()
 {
 	MyClass::$myValue = "Hello There";
@@ -478,7 +477,7 @@ runThisOneSecond(); // prints "Hello there";
 
 A great idea might be to use static variables / functions to replace the `global $user` object in drupal:
 
-```
+```php
 // Either
 
 User::$current;
@@ -504,7 +503,7 @@ Extending a class allows you to create specialist classes that contain methods t
 
 ### Example:
 
-```
+```php
 class Foo {
    public $name = 'Dan Matthews';
    public function whatIsMyName() {
@@ -531,7 +530,7 @@ Usually, websites explain inheritance using a car metaphor, and who am i to brea
 
 Now, say you have a class that describes a few parts of a general car, and has a few methods for general car functions.
 
-```
+```php
 <?php
 
 class Car {
@@ -567,7 +566,7 @@ Ok, so that describes pretty much every car ever, it has an engine, it can start
 
 And here's how we use it:
 
-```
+```php
 // Create an instance of the car.
 $car = new Car("2 Litre", "Red", "VW", "Golf");
 
@@ -589,7 +588,7 @@ As you might have guessed, we're going to do the third to keep our code DRY.
 
 So here's our new `Modern_Car` class:
 
-```
+```php
 <?php
 
 class Modern_Car extends Car {
@@ -633,7 +632,7 @@ class Modern_Car extends Car {
 
 And here it is in use:
 
-```
+```php
 // New nissan qasquai with sat nav, but no heated seats and no paddleshift.
 $newCar = new Modern_Car("3 Litre", "Black", "Nissan", "Qasquai", TRUE, FALSE, FALSE);
 
@@ -650,7 +649,7 @@ if ($newCar->hasSatNav()) { // Returns TRUE;
 
 For example: this wouldn't be acceptable:
 
-```
+```php
 <?php # SqliteDatabaseConnection.php
 Class Database {
 	function connect()
@@ -660,7 +659,7 @@ Class Database {
 }
 ?>
 ```
-```
+```php
 <?php # MysqlDatabaseConnection.php
 Class Database {
 	function connect()
@@ -673,7 +672,7 @@ Class Database {
 
 This would result in PHP telling us that two Classes have the same name, which is obviously not allowed, so instead of calling one `MysqlDatabase` or `SqliteDatabase`, we can use namespaces to logically structure our code:
 
-```
+```php
 <?php #MysqlDatabaseConnection.php
 	namespace Database\Connectors;
 	class Mysql {
@@ -687,7 +686,7 @@ This would result in PHP telling us that two Classes have the same name, which i
 
 And now we can use this class using this syntax:
 
-```
+```php
 // Get a Mysql Connection
 $database = new Database\Connectors\Mysql();
 
