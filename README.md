@@ -4,8 +4,55 @@
 
 We're going to quickly look at these.
 
-- The Ternary Operator
-- String/Variable interpolation
+### The Ternary Operator
+
+You can quickly use this to set a value of a variable based on a condition. Using the structure `$variable = condition ? value if true : value if false;`:
+
+```php
+$numberOfMonkeys = 30;
+
+$hasEnoughMonkeys = ($numberOfMonkeys == 30) ? true : false; // true
+
+```
+
+Use it to avoid adding extra / unneccesary `if()` statements.
+
+
+### String/Variable interpolation
+
+You'll have probably seen this used many times in PHP without knowing what it's called, it's where you use a variable *directly* inside a double-quoted string:
+
+```php
+$age = 25;
+
+$aboutMe = "I am $age years old"; // Prints 'I am 25 years old'
+```
+
+This DOES NOT WORK with single quoted strings:
+
+```php
+$aboutMe = "I am $age years old"; // Prints 'I am $age years old'
+```
+
+When using object properties, you can get away with it too:
+
+```php
+$aboutMe = "I am $user->age years old"; // Prints 'I am 25 years old'
+```
+
+But with arrays you _have_ to wrap variables in `{}` curly braces:
+
+```php
+$aboutMe "I am {$user['age']} years old"; // prints 'I am 25 years old'
+```
+
+But you can also use `{}` with any type of variable (some people do it for consistency):
+
+```php
+$aboutMe = "I am {$age} years old"; // Prints 'I am $age years old'
+$aboutMe = "I am {$user->age} years old"; // Prints 'I am 25 years old'
+$aboutMe "I am {$user['age']} years old"; // prints 'I am 25 years old'
+```
 
 ## Closures, or "anonymous functions".
 
@@ -233,6 +280,19 @@ $class->time = '10pm'; // DOES NOT WORK.
 $class->myMethod(); // DOES NOT WORK.
 
 ```
+
+### Public
+
+Accessible to everyone, inside and outside of the class.
+
+### Private
+
+Accessible only to methods of that class, internally.
+
+### Protected
+
+Accessible to methods of the class, and any subclasses, only.
+
 
 ## Magic methods
 
