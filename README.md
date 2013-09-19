@@ -12,7 +12,6 @@ You can quickly use this to set a value of a variable based on a condition. Usin
 $numberOfMonkeys = 30;
 
 $hasEnoughMonkeys = ($numberOfMonkeys == 30) ? true : false; // true
-
 ```
 
 Use it to avoid adding extra / unneccesary `if()` statements.
