@@ -322,7 +322,7 @@ echo $soda(); // Notice the brackets?, it should echo 'The flavour is Dr Pepper 
 Static functions and properties are useful for a few things:
 
 1. Grouping methods together into a re-usable set of logic.
-2. Replacing "global" variables by using a static varibale to store information as part of the request.
+2. Replacing "global" variables by using a static variable to store information as part of the request.
 3. Acting as easy-to-read facades for normal OOP functions (I'll get into this later).
 
 ### What a static function looks like.
