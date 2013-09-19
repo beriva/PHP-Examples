@@ -658,11 +658,8 @@ class Modern_Car extends Car {
 
 	public function __construct($engine_size, $colour, $make, $model, $sat_nav, $heated_seats, $paddle_shift)
 	{
-		// We can still access these properties because we're extending Car.
-		$this->engine_size = $engine_size;
-		$this->colour = $colour;
-		$this->make = $make;
-		$this->model = $model;
+		// Create an instance of the parent
+		parent::__construct($engine_size, $colour, $make, $model);
 
 		// Set our new properties.
 		$this->sat_nav = $sat_nav;
