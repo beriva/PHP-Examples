@@ -747,7 +747,7 @@ And now we can use this class using this syntax:
 $database = new Database\Connectors\Mysql();
 
 // Get a Sqlite Connection
-$sqliteDatabase = new Database\Connectors\Mysql();
+$sqliteDatabase = new Database\Connectors\Sqlite();
 ```
 
 ## Model View Controller.
