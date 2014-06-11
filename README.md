@@ -609,7 +609,7 @@ class Car {
 
 	public function startEngine()
 	{
-		echo "Starting engine of your {$this->colour} {$this->engine_size} {$this->make} {$this->model}"";
+		echo "Starting engine of your {$this->colour} {$this->engine_size} {$this->make} {$this->model}";
 	}
 
 	public function honkHorn()
